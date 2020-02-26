@@ -43,7 +43,7 @@ function Person(name, age) {
   this.name = name;
   this.age = age;
   this.stomach = [];
-  console.log(this.Person);
+  // console.log(this.Person);
 }
 
 const personOne = new Person({
@@ -87,11 +87,13 @@ Car.prototype.fill = function(gallons) {
   this.tank += gallons;
 };
 Car.prototype.drive = function(distance) {
-  if (this.tank / this.milesPerGallon >= 1) {
-    this.odometer += distance;
-    this.tank = this.tank - distance / this.milesPerGallon;
-  }
+  let drivableDist= this.tank * this.milesPerGallon;
+  console.log(drivableDist);
 };
+
+const carOne = new Car('car', 10);
+carOne.tank=100;
+console.log(carOne.drive(100));
 
 /*
   TASK 3
@@ -114,10 +116,11 @@ Baby.prototype.play = function() {
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. implicit: 80% of use cases. Applies to objects in method. 
+  if ever confused about what it applies to, look where the object is invoke and its left of the .
+  2. explicit: you seperate out the method into it's own function. can use .call, .apply and .bind to reuse the code
+  3. new: you make a new object and this. refers to that new object
+  4. window: what this. will default go to, not good to have it go there, useing 'strict' will make it flag an error if it would.
 */
 
 
